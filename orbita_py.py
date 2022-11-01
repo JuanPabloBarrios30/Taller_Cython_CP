@@ -37,6 +37,3 @@ def step_time(planet, time_span, n_steps):
     for j in range (n_steps):
         single_step(planet, dt)
 
-def main():
-    Planeta_ = Planet()
-    step_time(Planeta_, 5000,10000000)
