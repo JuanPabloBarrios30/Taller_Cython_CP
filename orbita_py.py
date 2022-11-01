@@ -26,7 +26,6 @@ def single_step(planet, dt):
     planet.z += dt * planet.vz
 
     #Time step velocity, according to force and mass
-
     planet.vx += dt * Fx / planet.m
     planet.vy += dt * Fy / planet.m
     planet.vz += dt * Fz / planet.m
@@ -40,4 +39,4 @@ def step_time(planet, time_span, n_steps):
 
 def main():
     Planeta_ = Planet()
-    step_time(Planeta_, 5000,1000000)
+    step_time(Planeta_, 5000,10000000)

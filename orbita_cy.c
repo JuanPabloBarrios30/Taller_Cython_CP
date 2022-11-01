@@ -24,7 +24,7 @@ END: Cython Metadata */
 #else
 #define CYTHON_ABI "0_29_28"
 #define CYTHON_HEX_VERSION 0x001D1CF0
-#define CYTHON_FUTURE_DIVISION 0
+#define CYTHON_FUTURE_DIVISION 1
 #include <stddef.h>
 #ifndef offsetof
   #define offsetof(type, member) ( (size_t) & ((type*)0) -> member )
@@ -1316,6 +1316,7 @@ int __pyx_module_is_main_orbita_cy = 0;
 
 /* Implementation of 'orbita_cy' */
 static PyObject *__pyx_builtin_range;
+static const char __pyx_k_m[] = "m";
 static const char __pyx_k_x[] = "x";
 static const char __pyx_k_y[] = "y";
 static const char __pyx_k_z[] = "z";
@@ -1360,6 +1361,7 @@ static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_dict;
 static PyObject *__pyx_n_s_getstate;
 static PyObject *__pyx_n_s_import;
+static PyObject *__pyx_n_s_m;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_main_2;
 static PyObject *__pyx_n_s_name;
@@ -2392,9 +2394,9 @@ static PyObject *__pyx_pf_9orbita_cy_6Planet_4__setstate_cython__(struct __pyx_o
 
 static void __pyx_f_9orbita_cy_single_step(PyObject *__pyx_v_planet, double __pyx_v_dt) {
   double __pyx_v_distance;
-  CYTHON_UNUSED double __pyx_v_Fx;
-  CYTHON_UNUSED double __pyx_v_Fy;
-  CYTHON_UNUSED double __pyx_v_Fz;
+  double __pyx_v_Fx;
+  double __pyx_v_Fy;
+  double __pyx_v_Fz;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
@@ -2578,6 +2580,78 @@ static void __pyx_f_9orbita_cy_single_step(PyObject *__pyx_v_planet, double __py
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_planet, __pyx_n_s_z, __pyx_t_1) < 0) __PYX_ERR(0, 30, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
+  /* "orbita_cy.pyx":33
+ * 
+ *     #Time step velocity, according to force and mass
+ *     planet.vx += dt * Fx / planet.m             # <<<<<<<<<<<<<<
+ *     planet.vy += dt * Fy / planet.m
+ *     planet.vz += dt * Fz / planet.m
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_planet, __pyx_n_s_vx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_5 = PyFloat_FromDouble((__pyx_v_dt * __pyx_v_Fx)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_planet, __pyx_n_s_m); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = PyNumber_InPlaceAdd(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_planet, __pyx_n_s_vx, __pyx_t_3) < 0) __PYX_ERR(0, 33, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "orbita_cy.pyx":34
+ *     #Time step velocity, according to force and mass
+ *     planet.vx += dt * Fx / planet.m
+ *     planet.vy += dt * Fy / planet.m             # <<<<<<<<<<<<<<
+ *     planet.vz += dt * Fz / planet.m
+ * 
+ */
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_planet, __pyx_n_s_vy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = PyFloat_FromDouble((__pyx_v_dt * __pyx_v_Fy)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_planet, __pyx_n_s_m); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_5 = __Pyx_PyNumber_Divide(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_planet, __pyx_n_s_vy, __pyx_t_1) < 0) __PYX_ERR(0, 34, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "orbita_cy.pyx":35
+ *     planet.vx += dt * Fx / planet.m
+ *     planet.vy += dt * Fy / planet.m
+ *     planet.vz += dt * Fz / planet.m             # <<<<<<<<<<<<<<
+ * 
+ * cdef void step_time(planet, double time_span, int n_steps):
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_planet, __pyx_n_s_vz); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_5 = PyFloat_FromDouble((__pyx_v_dt * __pyx_v_Fz)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_planet, __pyx_n_s_m); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = PyNumber_InPlaceAdd(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_planet, __pyx_n_s_vz, __pyx_t_3) < 0) __PYX_ERR(0, 35, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
   /* "orbita_cy.pyx":19
  *         self.m=1.0
  * 
@@ -2598,8 +2672,8 @@ static void __pyx_f_9orbita_cy_single_step(PyObject *__pyx_v_planet, double __py
   __Pyx_RefNannyFinishContext();
 }
 
-/* "orbita_cy.pyx":34
- *     #Time step velocity, according to force and mass
+/* "orbita_cy.pyx":37
+ *     planet.vz += dt * Fz / planet.m
  * 
  * cdef void step_time(planet, double time_span, int n_steps):             # <<<<<<<<<<<<<<
  *     """Make a number of time steps forward"""
@@ -2618,7 +2692,7 @@ static void __pyx_f_9orbita_cy_step_time(PyObject *__pyx_v_planet, double __pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("step_time", 0);
 
-  /* "orbita_cy.pyx":36
+  /* "orbita_cy.pyx":39
  * cdef void step_time(planet, double time_span, int n_steps):
  *     """Make a number of time steps forward"""
  *     cdef double dt = time_span / n_steps             # <<<<<<<<<<<<<<
@@ -2627,11 +2701,11 @@ static void __pyx_f_9orbita_cy_step_time(PyObject *__pyx_v_planet, double __pyx_
  */
   if (unlikely(__pyx_v_n_steps == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-    __PYX_ERR(0, 36, __pyx_L1_error)
+    __PYX_ERR(0, 39, __pyx_L1_error)
   }
-  __pyx_v_dt = (__pyx_v_time_span / __pyx_v_n_steps);
+  __pyx_v_dt = (__pyx_v_time_span / ((double)__pyx_v_n_steps));
 
-  /* "orbita_cy.pyx":38
+  /* "orbita_cy.pyx":41
  *     cdef double dt = time_span / n_steps
  * 
  *     for j in range (n_steps):             # <<<<<<<<<<<<<<
@@ -2643,7 +2717,7 @@ static void __pyx_f_9orbita_cy_step_time(PyObject *__pyx_v_planet, double __pyx_
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_j = __pyx_t_3;
 
-    /* "orbita_cy.pyx":39
+    /* "orbita_cy.pyx":42
  * 
  *     for j in range (n_steps):
  *         single_step(planet, dt)             # <<<<<<<<<<<<<<
@@ -2653,8 +2727,8 @@ static void __pyx_f_9orbita_cy_step_time(PyObject *__pyx_v_planet, double __pyx_
     __pyx_f_9orbita_cy_single_step(__pyx_v_planet, __pyx_v_dt);
   }
 
-  /* "orbita_cy.pyx":34
- *     #Time step velocity, according to force and mass
+  /* "orbita_cy.pyx":37
+ *     planet.vz += dt * Fz / planet.m
  * 
  * cdef void step_time(planet, double time_span, int n_steps):             # <<<<<<<<<<<<<<
  *     """Make a number of time steps forward"""
@@ -2669,7 +2743,7 @@ static void __pyx_f_9orbita_cy_step_time(PyObject *__pyx_v_planet, double __pyx_
   __Pyx_RefNannyFinishContext();
 }
 
-/* "orbita_cy.pyx":41
+/* "orbita_cy.pyx":44
  *         single_step(planet, dt)
  * 
  * def main():             # <<<<<<<<<<<<<<
@@ -2701,25 +2775,25 @@ static PyObject *__pyx_pf_9orbita_cy_main(CYTHON_UNUSED PyObject *__pyx_self) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("main", 0);
 
-  /* "orbita_cy.pyx":42
+  /* "orbita_cy.pyx":45
  * 
  * def main():
  *     Planeta_ = Planet()             # <<<<<<<<<<<<<<
  *     step_time(Planeta_, 5000,1000000)
  */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_9orbita_cy_Planet)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_9orbita_cy_Planet)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_Planeta_ = ((struct __pyx_obj_9orbita_cy_Planet *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "orbita_cy.pyx":43
+  /* "orbita_cy.pyx":46
  * def main():
  *     Planeta_ = Planet()
  *     step_time(Planeta_, 5000,1000000)             # <<<<<<<<<<<<<<
  */
   __pyx_f_9orbita_cy_step_time(((PyObject *)__pyx_v_Planeta_), 5000.0, 0xF4240);
 
-  /* "orbita_cy.pyx":41
+  /* "orbita_cy.pyx":44
  *         single_step(planet, dt)
  * 
  * def main():             # <<<<<<<<<<<<<<
@@ -2861,7 +2935,7 @@ static PyObject *__pyx_pf_9orbita_cy_2__pyx_unpickle_Planet(CYTHON_UNUSED PyObje
     __Pyx_INCREF(__pyx_n_s_PickleError);
     __Pyx_GIVEREF(__pyx_n_s_PickleError);
     PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_PickleError);
-    __pyx_t_3 = __Pyx_Import(__pyx_n_s_pickle, __pyx_t_2, -1); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 5, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_Import(__pyx_n_s_pickle, __pyx_t_2, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 5, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_3, __pyx_n_s_PickleError); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 5, __pyx_L1_error)
@@ -3452,6 +3526,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_dict, __pyx_k_dict, sizeof(__pyx_k_dict), 0, 0, 1, 1},
   {&__pyx_n_s_getstate, __pyx_k_getstate, sizeof(__pyx_k_getstate), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
+  {&__pyx_n_s_m, __pyx_k_m, sizeof(__pyx_k_m), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_main_2, __pyx_k_main_2, sizeof(__pyx_k_main_2), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
@@ -3483,7 +3558,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 38, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 41, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -3493,17 +3568,17 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "orbita_cy.pyx":41
+  /* "orbita_cy.pyx":44
  *         single_step(planet, dt)
  * 
  * def main():             # <<<<<<<<<<<<<<
  *     Planeta_ = Planet()
  *     step_time(Planeta_, 5000,1000000)
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_n_s_Planeta); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_n_s_Planeta); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
-  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_orbita_cy_pyx, __pyx_n_s_main_2, 41, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_orbita_cy_pyx, __pyx_n_s_main_2, 44, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 44, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_Planet(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
@@ -3810,16 +3885,16 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "orbita_cy.pyx":41
+  /* "orbita_cy.pyx":44
  *         single_step(planet, dt)
  * 
  * def main():             # <<<<<<<<<<<<<<
  *     Planeta_ = Planet()
  *     step_time(Planeta_, 5000,1000000)
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9orbita_cy_1main, NULL, __pyx_n_s_orbita_cy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9orbita_cy_1main, NULL, __pyx_n_s_orbita_cy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_main_2, __pyx_t_1) < 0) __PYX_ERR(0, 41, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_main_2, __pyx_t_1) < 0) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "(tree fragment)":1

@@ -30,6 +30,9 @@ cdef void single_step(planet,double dt):
     planet.z += dt * planet.vz
 
     #Time step velocity, according to force and mass
+    planet.vx += dt * Fx / planet.m
+    planet.vy += dt * Fy / planet.m
+    planet.vz += dt * Fz / planet.m
     
 cdef void step_time(planet, double time_span, int n_steps):
     """Make a number of time steps forward"""
