@@ -28,7 +28,7 @@ En otros términos, un programa escrito en este lenguaje contendría la sintaxis
 
 Analizar los resultados obtenidos de la ejecución de un programa construido en _Cython_ y _Python_, comparando el rendimiento que ofrece cada uno de los lenguajes de programación mencionados previamente, del cual se espera que _Cython_ ofrezca una mejora en los tiempos de ejecucion debido a la combinación de _Python_ con _C/C++_.
 
-##**Ejercicio:** Medida de rendimiento en Python/Cython para el problema de Planeta en Orbita
+## **Ejercicio:** Medida de rendimiento en Python/Cython para el problema de Planeta en Orbita
 Esta práctica consta de la construcción de cinco ficheros de extensión _.pyx_, _.py_ y un archivo de automatización _MakeFile_. A partir de estos ficheros se busca realizar una comparativa del rendimiento que puede ofrecer la ejecución de este programa en el lenguaje de programación _Python_, y como se puede obtener una mejora en el rendimiento al ser implementado en el lenguaje de programación _Cython_. Al final, lo que se obtendra en cada ejecución tanto para _Python_ como para _Cython_, es un fichero _.csv_ que contiene los tiempos de ejecución para los dos lenguajes realizados en una misma iteración. Con base en esos resultados, se realizará una comparativa del programa implementado en ambos lenguajes.
 
 Los archivos que se encuentran dentro del repositorio en GitHub ([Click aqui para acceder](https://github.com/JuanPabloBarrios30/Taller_Cython_CP.git)) son los siguientes: 
