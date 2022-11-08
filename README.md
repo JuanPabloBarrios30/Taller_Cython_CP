@@ -49,7 +49,7 @@ Los archivos que se encuentran dentro del repositorio en GitHub ([Click aqui par
 
 # **Resultados**
 
-Para presentar los resultados obtenidos en las pruebas de ejecución, es necesario hacer uso de los módulos de _Pandas_ y _Matplotlib_, ya que estos permitiran visualizar los datos de manera más sencilla. Para poder visualizarlos, **se recomienda acceder al fichero _.ipynb_ donde se encuentra todo un análisis exhaustivo de los datos obtenidos.**
+Para presentar los resultados obtenidos en las pruebas de ejecución, es necesario hacer uso de los módulos de _Pandas_ y _Matplotlib_, ya que estos permitiran visualizar los datos de manera más sencilla. Para poder visualizarlos, **se recomienda acceder al fichero _.ipynb_ donde se encuentra todo un análisis exhaustivo de los datos obtenidos. Tambien puede acceder a través de este enlace: ([Click aqui](https://colab.research.google.com/drive/1dqoI5yg25dkzGZWJ4lr14S99A1Stt615?usp=sharing))**
 
 # **Conclusiones**
 
